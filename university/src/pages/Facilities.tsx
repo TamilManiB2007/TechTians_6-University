@@ -184,7 +184,7 @@ const topUniversityFeatures = [
 ];
 
 const API_BASE =
-  (import.meta as any).env?.VITE_API_BASE || "http://localhost:8080";
+  (import.meta as any).env?.VITE_API_BASE || "http://localhost:4000";
 
 const Facilities = () => {
   const [selectedFacility, setSelectedFacility] = useState(0);

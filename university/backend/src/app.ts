@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import studentsRouter from "./routes/students";
 import authRouter from "./routes/auth";
+import assessmentRoutes from "./routes/assessments"; // <--- Mukkiyamana Import
 
 dotenv.config();
 
@@ -45,7 +46,7 @@ try {
 
 // CORS: allow dev frontend and credentials; explicitly allow Authorization header
 app.use(cors({
-  origin: "http://localhost:8080",
+  origin: "*",
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
   exposedHeaders: ["Authorization"],
@@ -68,6 +69,8 @@ app.get("/api/health", (_req, res) => {
 // mount api routes
 app.use("/api/auth", authRouter);
 app.use("/api/students", studentsRouter);
+app.use("/api/assessments", assessmentRoutes); // <--- Mukkiyamana Line (Exam create panna ithu thevai)
+
 
 console.log(`Attempting MongoDB connection to: ${maskedUri}`);
 
